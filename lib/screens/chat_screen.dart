@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -8,6 +9,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final bool _isTyping = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,13 @@ class _ChatScreenState extends State<ChatScreen> {
                   itemBuilder: (context, index) {
                     return Text('Hello');
                   }),
-            )
+            ),
+            if (_isTyping) ...[
+              const SpinKitThreeBounce(
+                color: Colors.orangeAccent,
+                size: 20,
+              ),
+            ]
           ],
         ),
       ),

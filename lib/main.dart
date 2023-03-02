@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.orange.shade100,
         primarySwatch: Colors.orange,
         appBarTheme: AppBarTheme(
-          color: Colors.redAccent,
+          color: Colors.orange,
         ),
       ),
       home: const ChatScreen(),
