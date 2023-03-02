@@ -15,6 +15,19 @@ class _ChatScreenState extends State<ChatScreen> {
         elevation: 2,
         title: const Text("ChatGPT"),
       ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Flexible(
+              child: ListView.builder(
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Text('Hello');
+                  }),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
