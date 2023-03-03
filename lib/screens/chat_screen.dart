@@ -10,6 +10,20 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final bool _isTyping = true;
+  late TextEditingController textEditingController;
+
+  @override
+  void initState() {
+    textEditingController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +46,33 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Colors.orangeAccent,
                 size: 20,
               ),
+              SizedBox(height: 10),
+              Material(
+                color: Colors.grey.shade300,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: textEditingController,
+                          onSubmitted: (value) {},
+                          decoration: InputDecoration.collapsed(
+                            hintText: 'どうしますか？',
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.send,
+                          color: Colors.green,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ]
           ],
         ),
