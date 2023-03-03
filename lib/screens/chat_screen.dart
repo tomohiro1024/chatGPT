@@ -30,6 +30,12 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         elevation: 2,
         title: const Text("ChatGPT"),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.reorder),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Column(
