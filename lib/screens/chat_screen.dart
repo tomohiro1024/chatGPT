@@ -29,13 +29,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 2,
-        title: const Text("ChatGPT"),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.reorder),
-          ),
-        ],
+        title: const Text("無料チャットAI"),
       ),
       body: SafeArea(
         child: Column(
@@ -54,7 +48,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               SizedBox(height: 10),
               Material(
-                color: Colors.grey.shade300,
+                color: Colors.green.shade100,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -64,15 +58,16 @@ class _ChatScreenState extends State<ChatScreen> {
                           controller: textEditingController,
                           onSubmitted: (value) {},
                           decoration: InputDecoration.collapsed(
-                            hintText: 'どうしますか？',
+                            hintText: '何か質問してみよう！',
                           ),
                         ),
                       ),
                       IconButton(
                         onPressed: () {},
                         icon: Icon(
-                          Icons.send,
+                          Icons.arrow_upward,
                           color: Colors.green,
+                          size: 30,
                         ),
                       ),
                     ],
