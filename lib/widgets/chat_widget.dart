@@ -17,6 +17,8 @@ class ChatWidget extends StatelessWidget {
                   Icons.person,
                   color: Colors.pink,
                 ),
+                SizedBox(width: 10),
+                Text('Hello'),
               ],
             ),
           ),
