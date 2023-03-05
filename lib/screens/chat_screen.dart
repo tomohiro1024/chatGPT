@@ -1,3 +1,4 @@
+import 'package:chat_gpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -38,7 +39,7 @@ class _ChatScreenState extends State<ChatScreen> {
               child: ListView.builder(
                   itemCount: 6,
                   itemBuilder: (context, index) {
-                    return Text('Hello');
+                    return ChatWidget();
                   }),
             ),
             if (_isTyping) ...[

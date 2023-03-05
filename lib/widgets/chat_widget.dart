@@ -8,11 +8,15 @@ class ChatWidget extends StatelessWidget {
     return Column(
       children: [
         Material(
+          color: Colors.orange.shade100,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Icon(Icons.add),
+                Icon(
+                  Icons.person,
+                  color: Colors.pink,
+                ),
               ],
             ),
           ),
