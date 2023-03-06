@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
 
 class ChatWidget extends StatelessWidget {
-  const ChatWidget({Key? key}) : super(key: key);
+  const ChatWidget({super.key, required this.msg, required this.chatIndex});
 
+  final String msg;
+  final int chatIndex;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Material(
-          color: Colors.orange.shade100,
+          color:
+              chatIndex == 0 ? Colors.orange.shade100 : Colors.green.shade100,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Icon(
-                  Icons.person,
-                  color: Colors.pink,
+                  chatIndex == 0 ? Icons.person : Icons.smart_toy,
+                  color: chatIndex == 0 ? Colors.pink : Colors.green,
                 ),
                 SizedBox(width: 10),
-                Text('Hello'),
+                Expanded(child: Text(msg)),
               ],
             ),
           ),

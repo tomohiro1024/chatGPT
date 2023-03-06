@@ -2,6 +2,8 @@ import 'package:chat_gpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '../constants/constants.dart';
+
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
 
@@ -39,7 +41,11 @@ class _ChatScreenState extends State<ChatScreen> {
               child: ListView.builder(
                   itemCount: 6,
                   itemBuilder: (context, index) {
-                    return ChatWidget();
+                    return ChatWidget(
+                      msg: chatMessages[index]["msg"].toString(),
+                      chatIndex: int.parse(
+                          chatMessages[index]["chatIndex"].toString()),
+                    );
                   }),
             ),
             if (_isTyping) ...[
@@ -49,7 +55,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               SizedBox(height: 10),
               Material(
-                color: Colors.green.shade100,
+                color: Colors.grey.shade300,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
