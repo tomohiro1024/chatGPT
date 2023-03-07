@@ -23,7 +23,7 @@ final chatMessages = [
   },
   {
     "msg":
-        "You're welcome! Let me know if you have any other questions or if there's anything else I can help you with.",
+        "You're welcome!! Let me know if you have any other questions or if there's anything else I can help you with.",
     "chatIndex": 1,
   },
 ];
