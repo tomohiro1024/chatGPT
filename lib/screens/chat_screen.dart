@@ -33,6 +33,12 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         elevation: 2,
         title: const Text("無料チャットAI"),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert_rounded),
+          )
+        ],
       ),
       body: SafeArea(
         child: Column(
