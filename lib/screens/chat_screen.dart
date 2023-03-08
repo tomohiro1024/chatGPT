@@ -30,12 +30,60 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        backgroundColor: Colors.orangeAccent.shade100,
+        child: ListView(
+          children: [
+            SizedBox(height: 30),
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(color: Colors.orange),
+                  bottom: BorderSide(color: Colors.orange),
+                ),
+              ),
+              child: ListTile(
+                title: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      splashRadius: 15,
+                      splashColor: Colors.green,
+                      icon: Icon(
+                        Icons.list,
+                        color: Colors.green,
+                      ),
+                    ),
+                    TextButton(
+                      child: Text(
+                        'チャットモデル',
+                        style: TextStyle(fontSize: 20, color: Colors.green),
+                      ),
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         elevation: 2,
         title: const Text("無料チャットAI"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              await showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return Row();
+                  });
+            },
             icon: const Icon(Icons.more_vert_rounded),
           )
         ],
