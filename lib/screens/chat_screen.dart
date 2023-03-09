@@ -34,7 +34,27 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Colors.orangeAccent.shade100,
         child: ListView(
           children: [
-            SizedBox(height: 30),
+            Container(
+              child: ListTile(
+                title: Row(
+                  children: [
+                    Icon(
+                      Icons.add,
+                      color: Colors.green,
+                    ),
+                    SizedBox(width: 15),
+                    Text(
+                      'メニュー',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 5),
             Container(
               decoration: BoxDecoration(
                 border: Border(
@@ -46,8 +66,27 @@ class _ChatScreenState extends State<ChatScreen> {
                 title: Row(
                   children: [
                     IconButton(
-                      onPressed: () {
+                      onPressed: () async {
                         Navigator.pop(context);
+                        await showModalBottomSheet(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(25),
+                                bottom: Radius.circular(25),
+                              ),
+                            ),
+                            backgroundColor: Colors.grey.shade300,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Row(
+                                  children: [
+                                    Flexible(child: Text('選択してください：')),
+                                  ],
+                                ),
+                              );
+                            });
                       },
                       splashRadius: 15,
                       splashColor: Colors.green,
@@ -63,30 +102,71 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       onPressed: () async {
                         Navigator.pop(context);
+                        await showModalBottomSheet(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(25),
+                                bottom: Radius.circular(25),
+                              ),
+                            ),
+                            backgroundColor: Colors.grey.shade300,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Row(
+                                  children: [
+                                    Flexible(child: Text('選択してください：')),
+                                  ],
+                                ),
+                              );
+                            });
                       },
                     ),
                   ],
                 ),
               ),
-            )
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.orange),
+                ),
+              ),
+              child: ListTile(
+                title: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      splashRadius: 15,
+                      splashColor: Colors.pinkAccent,
+                      icon: Icon(
+                        Icons.exit_to_app,
+                        color: Colors.pinkAccent,
+                      ),
+                    ),
+                    TextButton(
+                      child: Text(
+                        '閉じる',
+                        style:
+                            TextStyle(fontSize: 20, color: Colors.pinkAccent),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
       appBar: AppBar(
         elevation: 2,
         title: const Text("無料チャットAI"),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              await showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return Row();
-                  });
-            },
-            icon: const Icon(Icons.more_vert_rounded),
-          )
-        ],
       ),
       body: SafeArea(
         child: Column(
