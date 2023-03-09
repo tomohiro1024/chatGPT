@@ -1,3 +1,4 @@
+import 'package:chat_gpt/services/services.dart';
 import 'package:chat_gpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -68,25 +69,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     IconButton(
                       onPressed: () async {
                         Navigator.pop(context);
-                        await showModalBottomSheet(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(25),
-                                bottom: Radius.circular(25),
-                              ),
-                            ),
-                            backgroundColor: Colors.grey.shade300,
-                            context: context,
-                            builder: (context) {
-                              return Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Row(
-                                  children: [
-                                    Flexible(child: Text('選択してください：')),
-                                  ],
-                                ),
-                              );
-                            });
+                        Services.showModalSheet(context);
                       },
                       splashRadius: 15,
                       splashColor: Colors.green,
@@ -102,25 +85,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       onPressed: () async {
                         Navigator.pop(context);
-                        await showModalBottomSheet(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(25),
-                                bottom: Radius.circular(25),
-                              ),
-                            ),
-                            backgroundColor: Colors.grey.shade300,
-                            context: context,
-                            builder: (context) {
-                              return Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Row(
-                                  children: [
-                                    Flexible(child: Text('選択してください：')),
-                                  ],
-                                ),
-                              );
-                            });
+                        Services.showModalSheet(context);
                       },
                     ),
                   ],
