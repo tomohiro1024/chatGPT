@@ -1,3 +1,4 @@
+import 'package:chat_gpt/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class ModelsDropDownWidgets extends StatefulWidget {
@@ -12,7 +13,9 @@ class _ModelsDropDownWidgetsState extends State<ModelsDropDownWidgets> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      items: [],
+      dropdownColor: Colors.pinkAccent,
+      iconEnabledColor: Colors.orange,
+      items: getModelsItem,
       value: currentModels,
       onChanged: (value) {
         setState(() {

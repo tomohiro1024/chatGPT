@@ -75,13 +75,14 @@ class _ChatScreenState extends State<ChatScreen> {
                       splashColor: Colors.green,
                       icon: Icon(
                         Icons.list,
-                        color: Colors.green,
+                        color: Colors.pinkAccent,
                       ),
                     ),
                     TextButton(
                       child: Text(
                         'チャットモデル',
-                        style: TextStyle(fontSize: 20, color: Colors.green),
+                        style:
+                            TextStyle(fontSize: 20, color: Colors.pinkAccent),
                       ),
                       onPressed: () async {
                         Navigator.pop(context);
@@ -109,14 +110,13 @@ class _ChatScreenState extends State<ChatScreen> {
                       splashColor: Colors.pinkAccent,
                       icon: Icon(
                         Icons.exit_to_app,
-                        color: Colors.pinkAccent,
+                        color: Colors.red,
                       ),
                     ),
                     TextButton(
                       child: Text(
                         '閉じる',
-                        style:
-                            TextStyle(fontSize: 20, color: Colors.pinkAccent),
+                        style: TextStyle(fontSize: 20, color: Colors.red),
                       ),
                       onPressed: () {
                         Navigator.pop(context);
