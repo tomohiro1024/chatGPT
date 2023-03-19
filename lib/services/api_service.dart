@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
@@ -11,6 +12,12 @@ class ApiService {
           headers: {'Authorization': 'Bearer $API_KEY'});
 
       Map jsonResponse = jsonDecode(response.body);
+
+      if (jsonResponse['error'] != null) {
+        print('jsonResponse error: ${jsonResponse['error']['message']}');
+        print('jsonResponse error: ${jsonResponse['error']['type']}');
+        throw HttpException(jsonResponse['error']['message']);
+      }
       print('jsonResponse: $jsonResponse');
     } catch (e) {
       print('$e');
