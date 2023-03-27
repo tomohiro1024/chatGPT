@@ -14,4 +14,8 @@ class ModelsModel {
         root: json["root"],
         created: json["created"],
       );
+
+  static List<ModelsModel> modelsFromSnapshot(List modelSnapshot) {
+    return modelSnapshot.map((data) => ModelsModel.fromJson(data)).toList();
+  }
 }
