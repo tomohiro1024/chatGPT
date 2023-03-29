@@ -1,4 +1,5 @@
-import 'package:chat_gpt/constants/constants.dart';
+import 'package:chat_gpt/models/models_model.dart';
+import 'package:chat_gpt/services/api_service.dart';
 import 'package:flutter/material.dart';
 
 class ModelsDropDownWidgets extends StatefulWidget {
@@ -12,16 +13,31 @@ class _ModelsDropDownWidgetsState extends State<ModelsDropDownWidgets> {
   String currentModels = 'Model1';
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      dropdownColor: Colors.pinkAccent,
-      iconEnabledColor: Colors.orange,
-      items: getModelsItem,
-      value: currentModels,
-      onChanged: (value) {
-        setState(() {
-          currentModels = value.toString();
+    return FutureBuilder<List<ModelsModel>>(
+        future: ApiService.getModels(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(child: Text(snapshot.error.toString()));
+          }
+          return snapshot.data == null || snapshot.data!.isEmpty
+              ? const SizedBox.shrink()
+              : DropdownButton(
+                  dropdownColor: Colors.pinkAccent,
+                  iconEnabledColor: Colors.orange,
+                  items: List<DropdownMenuItem<String>>.generate(
+                    snapshot.data!.length,
+                    (index) => DropdownMenuItem(
+                      value: snapshot.data![index].id,
+                      child: Text(snapshot.data![index].id),
+                    ),
+                  ),
+                  value: currentModels,
+                  onChanged: (value) {
+                    setState(() {
+                      currentModels = value.toString();
+                    });
+                  },
+                );
         });
-      },
-    );
   }
 }
