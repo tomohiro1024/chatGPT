@@ -10,7 +10,7 @@ class ModelsDropDownWidgets extends StatefulWidget {
 }
 
 class _ModelsDropDownWidgetsState extends State<ModelsDropDownWidgets> {
-  String currentModels = 'Model1';
+  String currentModels = 'text-davinci-001';
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<ModelsModel>>(
@@ -21,22 +21,24 @@ class _ModelsDropDownWidgetsState extends State<ModelsDropDownWidgets> {
           }
           return snapshot.data == null || snapshot.data!.isEmpty
               ? const SizedBox.shrink()
-              : DropdownButton(
-                  dropdownColor: Colors.pinkAccent,
-                  iconEnabledColor: Colors.orange,
-                  items: List<DropdownMenuItem<String>>.generate(
-                    snapshot.data!.length,
-                    (index) => DropdownMenuItem(
-                      value: snapshot.data![index].id,
-                      child: Text(snapshot.data![index].id),
+              : FittedBox(
+                  child: DropdownButton(
+                    dropdownColor: Colors.pinkAccent,
+                    iconEnabledColor: Colors.orange,
+                    items: List<DropdownMenuItem<String>>.generate(
+                      snapshot.data!.length,
+                      (index) => DropdownMenuItem(
+                        value: snapshot.data![index].id,
+                        child: Text(snapshot.data![index].id),
+                      ),
                     ),
+                    value: currentModels,
+                    onChanged: (value) {
+                      setState(() {
+                        currentModels = value.toString();
+                      });
+                    },
                   ),
-                  value: currentModels,
-                  onChanged: (value) {
-                    setState(() {
-                      currentModels = value.toString();
-                    });
-                  },
                 );
         });
   }
