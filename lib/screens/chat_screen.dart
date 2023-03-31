@@ -1,5 +1,4 @@
 import 'package:chat_gpt/services/api_service.dart';
-import 'package:chat_gpt/services/services.dart';
 import 'package:chat_gpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -32,104 +31,104 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: Colors.orangeAccent.shade100,
-        child: ListView(
-          children: [
-            Container(
-              child: ListTile(
-                title: Row(
-                  children: [
-                    Icon(
-                      Icons.add,
-                      color: Colors.green,
-                    ),
-                    SizedBox(width: 15),
-                    Text(
-                      'メニュー',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 5),
-            Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(color: Colors.orange),
-                  bottom: BorderSide(color: Colors.orange),
-                ),
-              ),
-              child: ListTile(
-                title: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () async {
-                        Navigator.pop(context);
-                        Services.showModalSheet(context);
-                      },
-                      splashRadius: 15,
-                      splashColor: Colors.green,
-                      icon: Icon(
-                        Icons.list,
-                        color: Colors.pinkAccent,
-                      ),
-                    ),
-                    TextButton(
-                      child: Text(
-                        'チャットモデル',
-                        style:
-                            TextStyle(fontSize: 20, color: Colors.pinkAccent),
-                      ),
-                      onPressed: () async {
-                        Navigator.pop(context);
-                        Services.showModalSheet(context);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(color: Colors.orange),
-                ),
-              ),
-              child: ListTile(
-                title: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      splashRadius: 15,
-                      splashColor: Colors.pinkAccent,
-                      icon: Icon(
-                        Icons.exit_to_app,
-                        color: Colors.red,
-                      ),
-                    ),
-                    TextButton(
-                      child: Text(
-                        '閉じる',
-                        style: TextStyle(fontSize: 20, color: Colors.red),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      // drawer: Drawer(
+      //   backgroundColor: Colors.orangeAccent.shade100,
+      //   child: ListView(
+      //     children: [
+      //       Container(
+      //         child: ListTile(
+      //           title: Row(
+      //             children: [
+      //               Icon(
+      //                 Icons.add,
+      //                 color: Colors.green,
+      //               ),
+      //               SizedBox(width: 15),
+      //               Text(
+      //                 'メニュー',
+      //                 style: TextStyle(
+      //                     fontSize: 20,
+      //                     color: Colors.blue,
+      //                     fontWeight: FontWeight.bold),
+      //               ),
+      //             ],
+      //           ),
+      //         ),
+      //       ),
+      //       SizedBox(height: 5),
+      //       Container(
+      //         decoration: BoxDecoration(
+      //           border: Border(
+      //             top: BorderSide(color: Colors.orange),
+      //             bottom: BorderSide(color: Colors.orange),
+      //           ),
+      //         ),
+      //         child: ListTile(
+      //           title: Row(
+      //             children: [
+      //               IconButton(
+      //                 onPressed: () async {
+      //                   Navigator.pop(context);
+      //                   Services.showModalSheet(context);
+      //                 },
+      //                 splashRadius: 15,
+      //                 splashColor: Colors.green,
+      //                 icon: Icon(
+      //                   Icons.list,
+      //                   color: Colors.pinkAccent,
+      //                 ),
+      //               ),
+      //               TextButton(
+      //                 child: Text(
+      //                   'チャットモデル',
+      //                   style:
+      //                       TextStyle(fontSize: 20, color: Colors.pinkAccent),
+      //                 ),
+      //                 onPressed: () async {
+      //                   Navigator.pop(context);
+      //                   Services.showModalSheet(context);
+      //                 },
+      //               ),
+      //             ],
+      //           ),
+      //         ),
+      //       ),
+      //       Container(
+      //         decoration: BoxDecoration(
+      //           border: Border(
+      //             bottom: BorderSide(color: Colors.orange),
+      //           ),
+      //         ),
+      //         child: ListTile(
+      //           title: Row(
+      //             children: [
+      //               IconButton(
+      //                 onPressed: () {
+      //                   Navigator.pop(context);
+      //                 },
+      //                 splashRadius: 15,
+      //                 splashColor: Colors.pinkAccent,
+      //                 icon: Icon(
+      //                   Icons.exit_to_app,
+      //                   color: Colors.red,
+      //                 ),
+      //               ),
+      //               TextButton(
+      //                 child: Text(
+      //                   '閉じる',
+      //                   style: TextStyle(fontSize: 20, color: Colors.red),
+      //                 ),
+      //                 onPressed: () {
+      //                   Navigator.pop(context);
+      //                 },
+      //               ),
+      //             ],
+      //           ),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
       appBar: AppBar(
         elevation: 2,
         title: const Text("無料チャットAI"),
