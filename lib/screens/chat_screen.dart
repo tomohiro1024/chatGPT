@@ -13,7 +13,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final bool _isTyping = true;
+  bool _isTyping = false;
   late TextEditingController textEditingController;
 
   @override
@@ -152,41 +152,50 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Colors.orangeAccent,
                 size: 20,
               ),
-              SizedBox(height: 10),
-              Material(
-                color: Colors.grey.shade300,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: textEditingController,
-                          onSubmitted: (value) {},
-                          decoration: InputDecoration.collapsed(
-                            hintText: '何か質問してみよう！',
-                          ),
+            ],
+            SizedBox(height: 10),
+            Material(
+              color: Colors.grey.shade300,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: textEditingController,
+                        onSubmitted: (value) {},
+                        decoration: InputDecoration.collapsed(
+                          hintText: '何か質問してみよう！',
                         ),
                       ),
-                      IconButton(
-                        onPressed: () async {
-                          try {
-                            await ApiService.getModels();
-                          } catch (e) {
-                            print('error: $e');
-                          }
-                        },
-                        icon: Icon(
-                          Icons.arrow_upward,
-                          color: Colors.green,
-                          size: 30,
-                        ),
+                    ),
+                    IconButton(
+                      onPressed: () async {
+                        try {
+                          setState(() {
+                            _isTyping = true;
+                          });
+                          final lst = await ApiService.sendMessage(
+                              message: textEditingController.text,
+                              modelId: "text-davinci-003");
+                        } catch (e) {
+                          print('error: $e');
+                        } finally {
+                          setState(() {
+                            _isTyping = false;
+                          });
+                        }
+                      },
+                      icon: Icon(
+                        Icons.arrow_upward,
+                        color: Colors.green,
+                        size: 30,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              )
-            ]
+              ),
+            )
           ],
         ),
       ),
