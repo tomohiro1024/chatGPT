@@ -3,7 +3,7 @@ import 'package:chat_gpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../constants/constants.dart';
+import '../models/chat_model.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -27,6 +27,8 @@ class _ChatScreenState extends State<ChatScreen> {
     textEditingController.dispose();
     super.dispose();
   }
+
+  List<ChatModel> chatList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -138,12 +140,11 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             Flexible(
               child: ListView.builder(
-                  itemCount: 6,
+                  itemCount: chatList.length,
                   itemBuilder: (context, index) {
                     return ChatWidget(
-                      msg: chatMessages[index]["msg"].toString(),
-                      chatIndex: int.parse(
-                          chatMessages[index]["chatIndex"].toString()),
+                      msg: chatList[index].msg,
+                      chatIndex: chatList[index].chatIndex,
                     );
                   }),
             ),
@@ -170,22 +171,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () async {
-                        try {
-                          setState(() {
-                            _isTyping = true;
-                          });
-                          final lst = await ApiService.sendMessage(
-                              message: textEditingController.text,
-                              modelId: "text-davinci-003");
-                        } catch (e) {
-                          print('error: $e');
-                        } finally {
-                          setState(() {
-                            _isTyping = false;
-                          });
-                        }
-                      },
+                      onPressed: () {},
                       icon: Icon(
                         Icons.arrow_upward,
                         color: Colors.green,
@@ -200,5 +186,21 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> sendMessageFCT() async {
+    try {
+      setState(() {
+        _isTyping = true;
+      });
+      final lst = await ApiService.sendMessage(
+          message: textEditingController.text, modelId: "text-davinci-003");
+    } catch (e) {
+      print('error: $e');
+    } finally {
+      setState(() {
+        _isTyping = false;
+      });
+    }
   }
 }
