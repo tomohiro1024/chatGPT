@@ -164,14 +164,18 @@ class _ChatScreenState extends State<ChatScreen> {
                     Expanded(
                       child: TextField(
                         controller: textEditingController,
-                        onSubmitted: (value) {},
+                        onSubmitted: (value) async {
+                          await sendMessageFCT();
+                        },
                         decoration: InputDecoration.collapsed(
                           hintText: '何か質問してみよう！',
                         ),
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await sendMessageFCT();
+                      },
                       icon: Icon(
                         Icons.arrow_upward,
                         color: Colors.green,
@@ -193,8 +197,9 @@ class _ChatScreenState extends State<ChatScreen> {
       setState(() {
         _isTyping = true;
       });
-      final lst = await ApiService.sendMessage(
+      chatList = await ApiService.sendMessage(
           message: textEditingController.text, modelId: "text-davinci-003");
+      setState(() {});
     } catch (e) {
       print('error: $e');
     } finally {
