@@ -15,16 +15,19 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   bool _isTyping = false;
   late TextEditingController textEditingController;
+  late FocusNode focusNode;
 
   @override
   void initState() {
     textEditingController = TextEditingController();
+    focusNode = FocusNode();
     super.initState();
   }
 
   @override
   void dispose() {
     textEditingController.dispose();
+    focusNode.dispose();
     super.dispose();
   }
 
@@ -163,6 +166,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   children: [
                     Expanded(
                       child: TextField(
+                        focusNode: focusNode,
                         controller: textEditingController,
                         onSubmitted: (value) async {
                           await sendMessageFCT();
@@ -196,9 +200,12 @@ class _ChatScreenState extends State<ChatScreen> {
     try {
       setState(() {
         _isTyping = true;
+        chatList.add(ChatModel(msg: textEditingController.text, chatIndex: 0));
+        textEditingController.clear();
+        focusNode.unfocus();
       });
-      chatList = await ApiService.sendMessage(
-          message: textEditingController.text, modelId: "text-davinci-003");
+      chatList.addAll(await ApiService.sendMessage(
+          message: textEditingController.text, modelId: "text-davinci-003"));
       setState(() {});
     } catch (e) {
       print('error: $e');
