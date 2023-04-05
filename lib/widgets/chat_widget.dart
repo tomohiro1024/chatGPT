@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 class ChatWidget extends StatelessWidget {
@@ -22,7 +23,14 @@ class ChatWidget extends StatelessWidget {
                   color: chatIndex == 0 ? Colors.pink : Colors.green,
                 ),
                 SizedBox(width: 10),
-                Expanded(child: Text(msg)),
+                Expanded(
+                    child: chatIndex == 0
+                        ? Text(msg)
+                        : AnimatedTextKit(animatedTexts: [
+                            TypewriterAnimatedText(
+                              msg.trim(),
+                            ),
+                          ])),
               ],
             ),
           ),
