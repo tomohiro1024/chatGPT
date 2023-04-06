@@ -2,8 +2,10 @@ import 'package:chat_gpt/services/api_service.dart';
 import 'package:chat_gpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 
 import '../models/chat_model.dart';
+import '../providers/chats_provider.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -38,6 +40,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final chatProvider = Provider.of<ChatProvider>(context);
     return Scaffold(
       // drawer: Drawer(
       //   backgroundColor: Colors.orangeAccent.shade100,

@@ -11,6 +11,11 @@ class ModelsProvider with ChangeNotifier {
     return currentModel;
   }
 
+  void setCurrentModel(String newModel) {
+    currentModel = newModel;
+    notifyListeners();
+  }
+
   List<ModelsModel> get getModelsList {
     return modelsList;
   }
