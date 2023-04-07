@@ -140,7 +140,23 @@ class _ChatScreenState extends State<ChatScreen> {
       //   ),
       // ),
       appBar: NewGradientAppBar(
-        title: Text('無料チャットAI'),
+        title: RichText(
+          text: const TextSpan(
+            children: [
+              TextSpan(
+                text: '無料チャット',
+                style: TextStyle(color: Colors.black, fontSize: 20),
+              ),
+              TextSpan(
+                text: 'AI',
+                style: TextStyle(
+                    color: Colors.pinkAccent,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
         gradient: LinearGradient(
           colors: [
             Colors.cyan.shade300,
