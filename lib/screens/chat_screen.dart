@@ -1,10 +1,8 @@
-import 'package:chat_gpt/services/api_service.dart';
 import 'package:chat_gpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
-import '../models/chat_model.dart';
 import '../providers/chats_provider.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -36,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.dispose();
   }
 
-  List<ChatModel> chatList = [];
+  // List<ChatModel> chatList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -150,11 +148,11 @@ class _ChatScreenState extends State<ChatScreen> {
             Flexible(
               child: ListView.builder(
                   controller: _listScrollController,
-                  itemCount: chatList.length,
+                  itemCount: chatProvider.getChatList.length,
                   itemBuilder: (context, index) {
                     return ChatWidget(
-                      msg: chatList[index].msg,
-                      chatIndex: chatList[index].chatIndex,
+                      msg: chatProvider.getChatList[index].msg,
+                      chatIndex: chatProvider.getChatList[index].chatIndex,
                     );
                   }),
             ),
@@ -176,7 +174,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         focusNode: focusNode,
                         controller: textEditingController,
                         onSubmitted: (value) async {
-                          await sendMessageFCT();
+                          await sendMessageFCT(chatProvider: chatProvider);
                         },
                         decoration: InputDecoration.collapsed(
                           hintText: '何か質問してみよう！',
@@ -185,7 +183,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     IconButton(
                       onPressed: () async {
-                        await sendMessageFCT();
+                        await sendMessageFCT(chatProvider: chatProvider);
                       },
                       icon: Icon(
                         Icons.arrow_upward,
@@ -210,16 +208,19 @@ class _ChatScreenState extends State<ChatScreen> {
         curve: Curves.easeOut);
   }
 
-  Future<void> sendMessageFCT() async {
+  Future<void> sendMessageFCT({required ChatProvider chatProvider}) async {
     try {
       setState(() {
         _isTyping = true;
-        chatList.add(ChatModel(msg: textEditingController.text, chatIndex: 0));
+        // chatList.add(ChatModel(msg: textEditingController.text, chatIndex: 0));
+        chatProvider.addUserMessage(msg: textEditingController.text);
         textEditingController.clear();
         focusNode.unfocus();
       });
-      chatList.addAll(await ApiService.sendMessage(
-          message: textEditingController.text, modelId: "text-davinci-003"));
+      await chatProvider.sendMessageAndGetAnswers(
+          msg: textEditingController.text);
+      // chatList.addAll(await ApiService.sendMessage(
+      //     message: textEditingController.text, modelId: "text-davinci-003"));
       setState(() {});
     } catch (e) {
       print('error: $e');
