@@ -1,6 +1,7 @@
 import 'package:chat_gpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/chats_provider.dart';
@@ -138,9 +139,15 @@ class _ChatScreenState extends State<ChatScreen> {
       //     ],
       //   ),
       // ),
-      appBar: AppBar(
-        elevation: 2,
-        title: const Text("無料チャットAI"),
+      appBar: NewGradientAppBar(
+        title: Text('無料チャットAI'),
+        gradient: LinearGradient(
+          colors: [
+            Colors.lightBlue.shade100,
+            Colors.blue.shade200,
+            Colors.deepPurple.shade300
+          ],
+        ),
       ),
       body: SafeArea(
         child: Column(

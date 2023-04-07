@@ -11,8 +11,7 @@ class ChatWidget extends StatelessWidget {
     return Column(
       children: [
         Material(
-          color:
-              chatIndex == 0 ? Colors.orange.shade100 : Colors.green.shade100,
+          color: chatIndex == 0 ? Colors.yellow.shade100 : Colors.cyan.shade100,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(

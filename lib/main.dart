@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.orange.shade100,
-          primarySwatch: Colors.orange,
+          scaffoldBackgroundColor: Colors.yellow.shade100,
+          primarySwatch: Colors.yellow,
           appBarTheme: AppBarTheme(
-            color: Colors.orange,
+            color: Colors.yellow,
           ),
         ),
         home: const ChatScreen(),
