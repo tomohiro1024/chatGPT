@@ -143,9 +143,9 @@ class _ChatScreenState extends State<ChatScreen> {
         title: Text('無料チャットAI'),
         gradient: LinearGradient(
           colors: [
-            Colors.lightBlue.shade100,
-            Colors.blue.shade200,
-            Colors.deepPurple.shade300
+            Colors.cyan.shade300,
+            Colors.yellow.shade300,
+            Colors.pink.shade300,
           ],
         ),
       ),
