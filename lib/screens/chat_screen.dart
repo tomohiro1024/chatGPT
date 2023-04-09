@@ -281,6 +281,38 @@ class _ChatScreenState extends State<ChatScreen> {
       setState(() {});
     } catch (e) {
       print('error: $e');
+
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                backgroundColor: Colors.redAccent.shade200,
+                title: Text(
+                  '警告',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                content: SingleChildScrollView(
+                  child: ListBody(
+                    children: [
+                      Text(
+                        '通信エラーです。改善するまで少々お待ちください',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+                actions: [
+                  TextButton(
+                    child: const Text(
+                      '閉じる',
+                      style: TextStyle(fontSize: 20, color: Colors.blue),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ));
     } finally {
       setState(() {
         scrollListToEND();
