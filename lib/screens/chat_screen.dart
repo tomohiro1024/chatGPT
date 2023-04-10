@@ -1,6 +1,7 @@
 import 'package:chat_gpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -140,22 +141,32 @@ class _ChatScreenState extends State<ChatScreen> {
       //   ),
       // ),
       appBar: NewGradientAppBar(
-        title: RichText(
-          text: const TextSpan(
-            children: [
-              TextSpan(
-                text: '無料チャット',
-                style: TextStyle(color: Colors.black, fontSize: 20),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const FaIcon(
+              FontAwesomeIcons.otter,
+              color: Colors.cyan,
+            ),
+            const SizedBox(width: 10),
+            RichText(
+              text: const TextSpan(
+                children: [
+                  TextSpan(
+                    text: '無料チャット',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                  TextSpan(
+                    text: 'AI',
+                    style: TextStyle(
+                        color: Colors.pinkAccent,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
-              TextSpan(
-                text: 'AI',
-                style: TextStyle(
-                    color: Colors.pinkAccent,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
         gradient: LinearGradient(
           colors: [

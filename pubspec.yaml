@@ -40,6 +40,7 @@ dependencies:
   provider: ^6.0.5
   animated_text_kit: ^4.2.2
   new_gradient_app_bar: ^0.2.0
+  font_awesome_flutter: ^10.2.1
 
 dev_dependencies:
   flutter_test:
