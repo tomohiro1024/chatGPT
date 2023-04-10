@@ -232,6 +232,40 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> sendMessageFCT({required ChatProvider chatProvider}) async {
+    if (_isTyping) {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                backgroundColor: Colors.redAccent.shade200,
+                title: Text(
+                  '警告',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                content: SingleChildScrollView(
+                  child: ListBody(
+                    children: [
+                      Text(
+                        '一度に複数のメッセージを送信することはできません',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+                actions: [
+                  TextButton(
+                    child: const Text(
+                      '閉じる',
+                      style: TextStyle(fontSize: 20, color: Colors.blue),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ));
+      return;
+    }
     if (textEditingController.text.isEmpty) {
       showDialog(
           context: context,
@@ -267,15 +301,15 @@ class _ChatScreenState extends State<ChatScreen> {
       return;
     }
     try {
+      String msg = textEditingController.text;
       setState(() {
         _isTyping = true;
         // chatList.add(ChatModel(msg: textEditingController.text, chatIndex: 0));
-        chatProvider.addUserMessage(msg: textEditingController.text);
+        chatProvider.addUserMessage(msg: msg);
         textEditingController.clear();
-        focusNode.unfocus();
+        // focusNode.unfocus();
       });
-      await chatProvider.sendMessageAndGetAnswers(
-          msg: textEditingController.text);
+      await chatProvider.sendMessageAndGetAnswers(msg: msg);
       // chatList.addAll(await ApiService.sendMessage(
       //     message: textEditingController.text, modelId: "text-davinci-003"));
       setState(() {});
