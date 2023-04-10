@@ -185,7 +185,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 size: 20,
               ),
             ],
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Material(
               color: Colors.grey.shade300,
               child: Padding(
@@ -199,7 +199,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         onSubmitted: (value) async {
                           await sendMessageFCT(chatProvider: chatProvider);
                         },
-                        decoration: InputDecoration.collapsed(
+                        decoration: const InputDecoration.collapsed(
                           hintText: '何か質問してみよう！',
                         ),
                       ),
@@ -208,7 +208,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       onPressed: () async {
                         await sendMessageFCT(chatProvider: chatProvider);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_upward,
                         color: Colors.green,
                         size: 30,
@@ -237,7 +237,7 @@ class _ChatScreenState extends State<ChatScreen> {
           context: context,
           builder: (context) => AlertDialog(
                 backgroundColor: Colors.redAccent.shade200,
-                title: Text(
+                title: const Text(
                   '警告',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -271,14 +271,14 @@ class _ChatScreenState extends State<ChatScreen> {
           context: context,
           builder: (context) => AlertDialog(
                 backgroundColor: Colors.redAccent.shade200,
-                title: Text(
+                title: const Text(
                   '警告',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 content: SingleChildScrollView(
                   child: ListBody(
-                    children: [
+                    children: const [
                       Text(
                         '何か入力をしてください！',
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -307,7 +307,7 @@ class _ChatScreenState extends State<ChatScreen> {
         // chatList.add(ChatModel(msg: textEditingController.text, chatIndex: 0));
         chatProvider.addUserMessage(msg: msg);
         textEditingController.clear();
-        // focusNode.unfocus();
+        focusNode.unfocus();
       });
       await chatProvider.sendMessageAndGetAnswers(msg: msg);
       // chatList.addAll(await ApiService.sendMessage(
@@ -320,14 +320,14 @@ class _ChatScreenState extends State<ChatScreen> {
           context: context,
           builder: (context) => AlertDialog(
                 backgroundColor: Colors.redAccent.shade200,
-                title: Text(
+                title: const Text(
                   '警告',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 content: SingleChildScrollView(
                   child: ListBody(
-                    children: [
+                    children: const [
                       Text(
                         '通信エラーです。改善するまで少々お待ちください',
                         style: TextStyle(fontWeight: FontWeight.bold),
