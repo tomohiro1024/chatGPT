@@ -148,7 +148,7 @@ class _ChatScreenState extends State<ChatScreen> {
               FontAwesomeIcons.otter,
               color: Colors.cyan,
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 15),
             RichText(
               text: const TextSpan(
                 children: [

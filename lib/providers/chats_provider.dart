@@ -15,8 +15,8 @@ class ChatProvider with ChangeNotifier {
   }
 
   Future<void> sendMessageAndGetAnswers({required String msg}) async {
-    chatList.addAll(await ApiService.sendMessage(
-        message: msg, modelId: "text-davinci-003"));
+    chatList.addAll(await ApiService.sendMessageGPT(
+        message: msg, modelId: "gpt-3.5-turbo"));
     notifyListeners();
   }
 }
