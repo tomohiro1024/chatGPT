@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ChatWidget extends StatelessWidget {
   const ChatWidget({super.key, required this.msg, required this.chatIndex});
@@ -17,11 +18,13 @@ class ChatWidget extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(
-                  chatIndex == 0 ? Icons.person : Icons.smart_toy,
+                FaIcon(
+                  chatIndex == 0
+                      ? FontAwesomeIcons.user
+                      : FontAwesomeIcons.robot,
                   color: chatIndex == 0 ? Colors.pink : Colors.green,
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 15),
                 Expanded(
                     child: chatIndex == 0
                         ? Text(msg)

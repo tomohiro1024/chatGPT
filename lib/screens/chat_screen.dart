@@ -145,10 +145,10 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const FaIcon(
-              FontAwesomeIcons.otter,
-              color: Colors.cyan,
+              FontAwesomeIcons.meteor,
+              color: Colors.redAccent,
             ),
-            const SizedBox(width: 15),
+            const SizedBox(width: 10),
             RichText(
               text: const TextSpan(
                 children: [
@@ -219,10 +219,9 @@ class _ChatScreenState extends State<ChatScreen> {
                       onPressed: () async {
                         await sendMessageFCT(chatProvider: chatProvider);
                       },
-                      icon: const Icon(
-                        Icons.arrow_upward,
-                        color: Colors.green,
-                        size: 30,
+                      icon: const FaIcon(
+                        FontAwesomeIcons.paperPlane,
+                        color: Colors.cyan,
                       ),
                     ),
                   ],
