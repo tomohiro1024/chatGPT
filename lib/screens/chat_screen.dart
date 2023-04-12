@@ -36,8 +36,6 @@ class _ChatScreenState extends State<ChatScreen> {
     super.dispose();
   }
 
-  // List<ChatModel> chatList = [];
-
   @override
   Widget build(BuildContext context) {
     final chatProvider = Provider.of<ChatProvider>(context);
@@ -193,7 +191,7 @@ class _ChatScreenState extends State<ChatScreen> {
             if (_isTyping) ...[
               const SpinKitChasingDots(
                 color: Colors.orangeAccent,
-                size: 20,
+                size: 30,
               ),
             ],
             const SizedBox(height: 10),
@@ -254,7 +252,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 content: SingleChildScrollView(
                   child: ListBody(
-                    children: [
+                    children: const [
                       Text(
                         '一度に複数のメッセージを送信することはできません',
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -314,14 +312,11 @@ class _ChatScreenState extends State<ChatScreen> {
       String msg = textEditingController.text;
       setState(() {
         _isTyping = true;
-        // chatList.add(ChatModel(msg: textEditingController.text, chatIndex: 0));
         chatProvider.addUserMessage(msg: msg);
         textEditingController.clear();
         focusNode.unfocus();
       });
       await chatProvider.sendMessageAndGetAnswers(msg: msg);
-      // chatList.addAll(await ApiService.sendMessage(
-      //     message: textEditingController.text, modelId: "text-davinci-003"));
       setState(() {});
     } catch (e) {
       print('error: $e');
