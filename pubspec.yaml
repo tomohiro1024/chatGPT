@@ -41,6 +41,12 @@ dependencies:
   animated_text_kit: ^4.2.2
   new_gradient_app_bar: ^0.2.0
   font_awesome_flutter: ^10.2.1
+  flutter_launcher_icons: ^0.13.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "lib/assets/icon.png"
 
 dev_dependencies:
   flutter_test:
