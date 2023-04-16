@@ -1,4 +1,4 @@
-package com.tomohiro.chat_gpt
+package com.tomohiro.chat_got
 
 import io.flutter.embedding.android.FlutterActivity
 
