@@ -151,7 +151,7 @@ class _ChatScreenState extends State<ChatScreen> {
               text: const TextSpan(
                 children: [
                   TextSpan(
-                    text: '無料チャット',
+                    text: 'チャット',
                     style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                   TextSpan(
@@ -160,6 +160,10 @@ class _ChatScreenState extends State<ChatScreen> {
                         color: Colors.pinkAccent,
                         fontSize: 30,
                         fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(
+                    text: 'さん',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                 ],
               ),
