@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../providers/chats_provider.dart';
 
@@ -40,104 +41,151 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     final chatProvider = Provider.of<ChatProvider>(context);
     return Scaffold(
-      // drawer: Drawer(
-      //   backgroundColor: Colors.orangeAccent.shade100,
-      //   child: ListView(
-      //     children: [
-      //       Container(
-      //         child: ListTile(
-      //           title: Row(
-      //             children: [
-      //               Icon(
-      //                 Icons.add,
-      //                 color: Colors.green,
-      //               ),
-      //               SizedBox(width: 15),
-      //               Text(
-      //                 'メニュー',
-      //                 style: TextStyle(
-      //                     fontSize: 20,
-      //                     color: Colors.blue,
-      //                     fontWeight: FontWeight.bold),
-      //               ),
-      //             ],
-      //           ),
-      //         ),
-      //       ),
-      //       SizedBox(height: 5),
-      //       Container(
-      //         decoration: BoxDecoration(
-      //           border: Border(
-      //             top: BorderSide(color: Colors.orange),
-      //             bottom: BorderSide(color: Colors.orange),
-      //           ),
-      //         ),
-      //         child: ListTile(
-      //           title: Row(
-      //             children: [
-      //               IconButton(
-      //                 onPressed: () async {
-      //                   Navigator.pop(context);
-      //                   Services.showModalSheet(context);
-      //                 },
-      //                 splashRadius: 15,
-      //                 splashColor: Colors.green,
-      //                 icon: Icon(
-      //                   Icons.list,
-      //                   color: Colors.pinkAccent,
-      //                 ),
-      //               ),
-      //               TextButton(
-      //                 child: Text(
-      //                   'チャットモデル',
-      //                   style:
-      //                       TextStyle(fontSize: 20, color: Colors.pinkAccent),
-      //                 ),
-      //                 onPressed: () async {
-      //                   Navigator.pop(context);
-      //                   Services.showModalSheet(context);
-      //                 },
-      //               ),
-      //             ],
-      //           ),
-      //         ),
-      //       ),
-      //       Container(
-      //         decoration: BoxDecoration(
-      //           border: Border(
-      //             bottom: BorderSide(color: Colors.orange),
-      //           ),
-      //         ),
-      //         child: ListTile(
-      //           title: Row(
-      //             children: [
-      //               IconButton(
-      //                 onPressed: () {
-      //                   Navigator.pop(context);
-      //                 },
-      //                 splashRadius: 15,
-      //                 splashColor: Colors.pinkAccent,
-      //                 icon: Icon(
-      //                   Icons.exit_to_app,
-      //                   color: Colors.red,
-      //                 ),
-      //               ),
-      //               TextButton(
-      //                 child: Text(
-      //                   '閉じる',
-      //                   style: TextStyle(fontSize: 20, color: Colors.red),
-      //                 ),
-      //                 onPressed: () {
-      //                   Navigator.pop(context);
-      //                 },
-      //               ),
-      //             ],
-      //           ),
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      drawer: Drawer(
+        backgroundColor: Colors.cyanAccent.shade100,
+        child: ListView(
+          children: [
+            Container(
+              child: ListTile(
+                title: Row(
+                  children: const [
+                    Icon(
+                      Icons.add,
+                      color: Colors.green,
+                    ),
+                    SizedBox(width: 15),
+                    Text(
+                      'メニュー',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.redAccent,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 5),
+            // Container(
+            //   decoration: BoxDecoration(
+            //     border: Border(
+            //       top: BorderSide(color: Colors.orange),
+            //       bottom: BorderSide(color: Colors.orange),
+            //     ),
+            //   ),
+            //   child: ListTile(
+            //     title: Row(
+            //       children: [
+            //         IconButton(
+            //           onPressed: () async {
+            //             Navigator.pop(context);
+            //             Services.showModalSheet(context);
+            //           },
+            //           splashRadius: 15,
+            //           splashColor: Colors.green,
+            //           icon: Icon(
+            //             Icons.list,
+            //             color: Colors.pinkAccent,
+            //           ),
+            //         ),
+            //         TextButton(
+            //           child: Text(
+            //             'チャットモデル',
+            //             style:
+            //                 TextStyle(fontSize: 20, color: Colors.pinkAccent),
+            //           ),
+            //           onPressed: () async {
+            //             Navigator.pop(context);
+            //             Services.showModalSheet(context);
+            //           },
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  top: BorderSide(color: Colors.orange),
+                  bottom: BorderSide(color: Colors.orange),
+                ),
+              ),
+              child: ListTile(
+                title: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () async {
+                        var uri = Uri.parse(
+                            'https://apps.apple.com/jp/app/id1668973474');
+                        await launchUrl(
+                          uri,
+                          mode: LaunchMode.externalApplication,
+                        );
+                        Navigator.pop(context);
+                      },
+                      splashRadius: 15,
+                      splashColor: Colors.pinkAccent,
+                      icon: const Icon(
+                        Icons.edit,
+                        color: Colors.pinkAccent,
+                      ),
+                    ),
+                    TextButton(
+                      child: const Text(
+                        'レビューする',
+                        style:
+                            TextStyle(fontSize: 20, color: Colors.pinkAccent),
+                      ),
+                      onPressed: () async {
+                        var uri = Uri.parse(
+                            'https://apps.apple.com/jp/app/id1668973474');
+                        await launchUrl(
+                          uri,
+                          mode: LaunchMode.externalApplication,
+                        );
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.orange),
+                ),
+              ),
+              child: ListTile(
+                title: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      splashRadius: 15,
+                      splashColor: Colors.pinkAccent,
+                      icon: const Icon(
+                        Icons.exit_to_app,
+                        color: Colors.black,
+                      ),
+                    ),
+                    TextButton(
+                      child: const Text(
+                        '閉じる',
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       appBar: NewGradientAppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -168,6 +216,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 ],
               ),
             ),
+            const SizedBox(width: 40),
           ],
         ),
         gradient: LinearGradient(
