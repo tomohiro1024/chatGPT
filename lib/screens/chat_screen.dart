@@ -21,6 +21,8 @@ class _ChatScreenState extends State<ChatScreen> {
   late ScrollController _listScrollController;
   late FocusNode focusNode;
 
+  bool _isVisible = true;
+
   @override
   void initState() {
     _listScrollController = ScrollController();
@@ -241,6 +243,12 @@ class _ChatScreenState extends State<ChatScreen> {
                     );
                   }),
             ),
+            _isVisible
+                ? Center(
+                    child: Text('AIがあなたのチャットを待っています...'),
+                  )
+                : Container(),
+            const SizedBox(height: 20),
             if (_isTyping) ...[
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -275,6 +283,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     IconButton(
                       onPressed: () async {
+                        setState(() {
+                          _isVisible = false;
+                        });
                         await sendMessageFCT(chatProvider: chatProvider);
                       },
                       icon: const FaIcon(
