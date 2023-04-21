@@ -242,9 +242,16 @@ class _ChatScreenState extends State<ChatScreen> {
                   }),
             ),
             if (_isTyping) ...[
-              const SpinKitChasingDots(
-                color: Colors.orangeAccent,
-                size: 30,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  SpinKitChasingDots(
+                    color: Colors.orangeAccent,
+                    size: 30,
+                  ),
+                  SizedBox(width: 10),
+                  Text('考え中です...'),
+                ],
               ),
             ],
             const SizedBox(height: 10),
