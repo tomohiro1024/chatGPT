@@ -245,7 +245,16 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             _isVisible
                 ? Center(
-                    child: Text('AIがあなたのチャットを待っています...'),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('AIがあなたのチャットを待っています...'),
+                        SpinKitPulse(
+                          color: Colors.blue,
+                          size: 30,
+                        ),
+                      ],
+                    ),
                   )
                 : Container(),
             const SizedBox(height: 20),
