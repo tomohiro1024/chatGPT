@@ -16,11 +16,10 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  bool _isTyping = false;
   late TextEditingController textEditingController;
   late ScrollController _listScrollController;
   late FocusNode focusNode;
-
+  bool _isTyping = false;
   bool _isVisible = true;
 
   @override
@@ -47,24 +46,22 @@ class _ChatScreenState extends State<ChatScreen> {
         backgroundColor: Colors.cyanAccent.shade100,
         child: ListView(
           children: [
-            Container(
-              child: ListTile(
-                title: Row(
-                  children: const [
-                    Icon(
-                      Icons.add,
-                      color: Colors.green,
-                    ),
-                    SizedBox(width: 15),
-                    Text(
-                      'メニュー',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.redAccent,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
+            ListTile(
+              title: Row(
+                children: const [
+                  Icon(
+                    Icons.add,
+                    color: Colors.green,
+                  ),
+                  SizedBox(width: 15),
+                  Text(
+                    'メニュー',
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.redAccent,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 5),
@@ -247,17 +244,22 @@ class _ChatScreenState extends State<ChatScreen> {
                 ? Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
+                        FaIcon(
+                          FontAwesomeIcons.robot,
+                          color: Colors.green,
+                        ),
+                        SizedBox(width: 5),
                         Text('AIがあなたのチャットを待っています...'),
                         SpinKitPulse(
-                          color: Colors.blue,
+                          color: Colors.green,
                           size: 30,
                         ),
                       ],
                     ),
                   )
                 : Container(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             if (_isTyping) ...[
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
