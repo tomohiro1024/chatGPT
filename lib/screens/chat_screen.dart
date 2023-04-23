@@ -115,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     IconButton(
                       onPressed: () async {
                         var uri = Uri.parse(
-                            'https://apps.apple.com/jp/app/id1668973474');
+                            'https://apps.apple.com/jp/app/id6447792822');
                         await launchUrl(
                           uri,
                           mode: LaunchMode.externalApplication,
@@ -137,7 +137,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                       onPressed: () async {
                         var uri = Uri.parse(
-                            'https://apps.apple.com/jp/app/id1668973474');
+                            'https://apps.apple.com/jp/app/id6447792822');
                         await launchUrl(
                           uri,
                           mode: LaunchMode.externalApplication,
