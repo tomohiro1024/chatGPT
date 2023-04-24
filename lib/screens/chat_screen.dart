@@ -48,13 +48,17 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             ListTile(
               title: Row(
-                children: const [
-                  Icon(
-                    Icons.add,
-                    color: Colors.green,
+                children: [
+                  Container(
+                    width: 45,
+                    height: 45,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset('images/icon.png'),
+                    ),
                   ),
-                  SizedBox(width: 15),
-                  Text(
+                  const SizedBox(width: 15),
+                  const Text(
                     'メニュー',
                     style: TextStyle(
                         fontSize: 20,
