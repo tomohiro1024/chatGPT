@@ -356,6 +356,45 @@ class _ChatScreenState extends State<ChatScreen> {
               ));
       return;
     }
+
+    List<String> prohibitedWordsList = ['ゴミ', '死', '殺', 'うん', 'ガキ', 'チビ', 'ちん'];
+
+    if (prohibitedWordsList
+        .any((word) => textEditingController.text.contains(word))) {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                backgroundColor: Colors.redAccent.shade200,
+                title: const Text(
+                  '警告',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                content: SingleChildScrollView(
+                  child: ListBody(
+                    children: const [
+                      Text(
+                        '不適切な文字列が含まれています',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+                actions: [
+                  TextButton(
+                    child: const Text(
+                      '閉じる',
+                      style: TextStyle(fontSize: 20, color: Colors.blue),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ));
+      return;
+    }
+
     if (textEditingController.text.isEmpty) {
       showDialog(
           context: context,
