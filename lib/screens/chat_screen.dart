@@ -49,7 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
             ListTile(
               title: Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 45,
                     height: 45,
                     child: ClipRRect(
@@ -183,6 +183,16 @@ class _ChatScreenState extends State<ChatScreen> {
                       },
                     ),
                   ],
+                ),
+              ),
+            ),
+            const ListTile(
+              title: Text(
+                'バージョン: 1.2.0',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
                 ),
               ),
             ),
