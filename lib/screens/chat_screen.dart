@@ -2,9 +2,9 @@ import 'package:chat_gpt/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../providers/chats_provider.dart';
 
@@ -41,6 +41,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     final chatProvider = Provider.of<ChatProvider>(context);
+    final InAppReview inAppReview = InAppReview.instance;
     return Scaffold(
       drawer: Drawer(
         backgroundColor: Colors.cyanAccent.shade100,
@@ -118,13 +119,17 @@ class _ChatScreenState extends State<ChatScreen> {
                   children: [
                     IconButton(
                       onPressed: () async {
-                        var uri = Uri.parse(
-                            'https://apps.apple.com/jp/app/id6447792822');
-                        await launchUrl(
-                          uri,
-                          mode: LaunchMode.externalApplication,
-                        );
-                        Navigator.pop(context);
+                        if (await inAppReview.isAvailable()) {
+                          inAppReview.openStoreListing(
+                              appStoreId: 'id6447792822');
+                        }
+                        //// launchUrlを使用してストアページ表示させたい場合 ////
+                        // var uri = Uri.parse(
+                        //     'https://apps.apple.com/jp/app/id6447792822/reviews');
+                        // await launchUrl(
+                        //   uri,
+                        //   mode: LaunchMode.externalApplication,
+                        // );
                       },
                       splashRadius: 15,
                       splashColor: Colors.pinkAccent,
@@ -140,13 +145,10 @@ class _ChatScreenState extends State<ChatScreen> {
                             TextStyle(fontSize: 20, color: Colors.pinkAccent),
                       ),
                       onPressed: () async {
-                        var uri = Uri.parse(
-                            'https://apps.apple.com/jp/app/id6447792822');
-                        await launchUrl(
-                          uri,
-                          mode: LaunchMode.externalApplication,
-                        );
-                        Navigator.pop(context);
+                        if (await inAppReview.isAvailable()) {
+                          inAppReview.openStoreListing(
+                              appStoreId: 'id6447792822');
+                        }
                       },
                     ),
                   ],
