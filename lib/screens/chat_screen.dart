@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:share/share.dart';
 
 import '../providers/chats_provider.dart';
 
@@ -149,6 +150,45 @@ class _ChatScreenState extends State<ChatScreen> {
                           inAppReview.openStoreListing(
                               appStoreId: 'id6447792822');
                         }
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.orange),
+                ),
+              ),
+              child: ListTile(
+                title: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        String text =
+                            '超大人気アプリ！「チャットAIさん」\nhttps://apps.apple.com/jp/app/id6447792822';
+                        Share.share(text);
+                        Navigator.pop(context);
+                      },
+                      splashRadius: 15,
+                      splashColor: Colors.pinkAccent,
+                      icon: const Icon(
+                        Icons.share,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    TextButton(
+                      child: const Text(
+                        '共有する',
+                        style: TextStyle(fontSize: 20, color: Colors.grey),
+                      ),
+                      onPressed: () {
+                        String text =
+                            '超大人気アプリ！「チャットAIさん」\nhttps://apps.apple.com/jp/app/id6447792822';
+                        Share.share(text);
+                        Navigator.pop(context);
                       },
                     ),
                   ],
