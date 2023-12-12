@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class Services {
   static Future<void> showModalSheet(BuildContext context) async {
     await showModalBottomSheet(
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(25),
             bottom: Radius.circular(25),
@@ -17,7 +17,7 @@ class Services {
             padding: const EdgeInsets.all(20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 Flexible(child: Text('選択：')),
                 SizedBox(width: 30),
                 Flexible(flex: 2, child: ModelsDropDownWidgets()),
